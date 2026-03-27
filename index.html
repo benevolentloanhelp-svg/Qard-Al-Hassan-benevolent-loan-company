@@ -1,110 +1,911 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Benevolent Loan Company</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <title>Benevolent Loan Company — Fast, Reliable, and Trusted Loans</title>
+  <meta name="description" content="Benevolent Loan Company offers fast, reliable personal, business, and emergency loans. Get approved today with our simple application process.">
+  <meta name="theme-color" content="#0a3d62">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏦</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --primary: #0a3d62;
+      --primary-light: #1e5f8b;
+      --primary-dark: #072a45;
+      --accent: #f0a500;
+      --accent-hover: #d4920a;
+      --text: #1a1a2e;
+      --text-light: #555;
+      --bg: #ffffff;
+      --bg-alt: #f7f9fc;
+      --bg-dark: #0a3d62;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(10,61,98,0.08);
+      --shadow-lg: 0 12px 40px rgba(10,61,98,0.12);
+      --transition: 0.3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Bar */
     .topbar {
-      background: #0a3d62;
-      color: white;
-      padding: 10px;
-      text-align: center;
-      font-size: 14px;
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.9);
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
     }
+    .topbar a { color: rgba(255,255,255,0.9); text-decoration: none; }
+    .topbar a:hover { color: var(--accent); }
 
-    header {
-      background: #1e5f8b;
-      color: white;
-      padding: 30px;
-      text-align: center;
+    /* Navigation */
+    nav {
+      background: var(--primary);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
     }
-
-    .hero {
-      padding: 40px;
-      text-align: center;
-    }
-
-    .hero button {
-      padding: 12px 25px;
-      background: #0a3d62;
+    .logo {
       color: white;
+      font-size: 1.35rem;
+      font-weight: 800;
+      padding: 18px 0;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.1); color: white; }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: var(--primary-dark) !important;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--accent-hover) !important; }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
       border: none;
-      font-size: 16px;
+      color: white;
+      font-size: 1.5rem;
       cursor: pointer;
+      padding: 8px;
     }
 
-    .services {
-      padding: 30px;
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, #2980b9 100%);
+      color: white;
+      padding: 100px 40px 80px;
       text-align: center;
-      background: #f4f4f4;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(240,165,0,0.08) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 720px; margin: 0 auto; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(240,165,0,0.2);
+      color: var(--accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      border: 1px solid rgba(240,165,0,0.3);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      max-width: 540px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(240,165,0,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+    /* Trust Strip */
+    .trust-strip {
+      background: var(--bg-alt);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #e8ecf1;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    .trust-icon {
+      width: 40px;
+      height: 40px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
     }
 
-    .contact {
-      padding: 30px;
+    /* Section */
+    section { padding: 80px 40px; }
+    .section-header {
       text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+    .section-label {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .section-header p {
+      color: var(--text-light);
+      font-size: 1.05rem;
     }
 
+    /* Services */
+    .services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--bg);
+      border: 1px solid #e8ecf1;
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 20px;
+    }
+    .service-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
+
+    /* How It Works */
+    .how-it-works { background: var(--bg-alt); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .step { text-align: center; position: relative; }
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 0 auto 18px;
+    }
+    .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+    .step p { color: var(--text-light); font-size: 0.93rem; max-width: 260px; margin: 0 auto; }
+
+    /* Why Choose Us */
+    .why-us { background: var(--bg); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feature {
+      display: flex;
+      gap: 16px;
+      padding: 24px;
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .feature:hover { background: var(--bg-alt); }
+    .feature-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(10,61,98,0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+    .feature h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .feature p { color: var(--text-light); font-size: 0.9rem; }
+
+    /* Testimonials */
+    .testimonials { background: var(--bg-alt); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .testimonial {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .stars { color: var(--accent); font-size: 1rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testimonial blockquote {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .author-name { font-weight: 600; font-size: 0.9rem; }
+    .author-role { font-size: 0.8rem; color: var(--text-light); }
+
+    /* FAQ */
+    .faq { background: var(--bg); }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid #e8ecf1;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 1.4rem;
+      color: var(--primary);
+      transition: var(--transition);
+      font-weight: 300;
+    }
+    .faq-item.active .faq-question::after { content: '\2212'; }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.active .faq-answer { max-height: 200px; }
+    .faq-answer p {
+      padding-bottom: 20px;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: white;
+      text-align: center;
+      padding: 70px 40px;
+    }
+    .cta-banner h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; margin-bottom: 14px; }
+    .cta-banner p { opacity: 0.9; max-width: 500px; margin: 0 auto 30px; }
+
+    /* Contact */
+    .contact { background: var(--bg-alt); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .contact-card {
+      background: white;
+      padding: 32px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .contact-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .contact-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(10,61,98,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin: 0 auto 14px;
+    }
+    .contact-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .contact-card a:hover { color: var(--accent); }
+
+    /* WhatsApp */
     .whatsapp {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: green;
-      color: white;
-      padding: 15px;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
       border-radius: 50%;
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
       text-decoration: none;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      z-index: 99;
+      transition: var(--transition);
+      animation: pulse 2s infinite;
+    }
+    .whatsapp:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 24px rgba(37,211,102,0.6); }
     }
 
+    /* Footer */
     footer {
-      background: #0a3d62;
-      color: white;
-      text-align: center;
-      padding: 15px;
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 50px 40px 30px;
     }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+    }
+    .footer-brand h3 { color: white; font-size: 1.2rem; font-weight: 800; margin-bottom: 12px; }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 300px; }
+    .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.6); text-decoration: none; padding: 4px 0; font-size: 0.9rem; transition: var(--transition); }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        padding: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      }
+      .hero { padding: 60px 20px 50px; }
+      section { padding: 60px 20px; }
+      .trust-strip { gap: 24px; padding: 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .cta-banner { padding: 50px 20px; }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
 <body>
 
+<!-- Top Bar -->
 <div class="topbar">
-  📞 +1 929 450 4094 | 📧 benevolentloanhelp@gmail.com
+  <a href="tel:+19294504094">&#128222; +1 (929) 450-4094</a>
+  <a href="mailto:benevolentloanhelp@gmail.com">&#9993; benevolentloanhelp@gmail.com</a>
 </div>
 
-<header>
-  <h1>Benevolent Loan Company</h1>
-  <p>Fast, Reliable, and Trusted Loans</p>
-</header>
+<!-- Navigation -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-icon">BL</span>
+    Benevolent Loan
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#apply" class="nav-cta">Apply Now</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">&#9776;</button>
+</nav>
 
-<div class="hero">
-  <h2>Get Approved for a Loan Today</h2>
-  <p>Quick processing. No stress. Secure service.</p>
-  <button>Apply Now</button>
+<!-- Hero Section -->
+<section class="hero" id="apply">
+  <div class="hero-content fade-in">
+    <span class="hero-badge">Trusted by Thousands</span>
+    <h1>Financial Solutions Built Around You</h1>
+    <p>Get the funding you need with competitive rates, fast approvals, and a team that puts your financial goals first.</p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">Apply Now &#8594;</a>
+      <a href="#how-it-works" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Strip -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <span class="trust-icon">&#9889;</span>
+    <span>Fast Approval</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">&#128274;</span>
+    <span>Secure Process</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">&#128176;</span>
+    <span>Competitive Rates</span>
+  </div>
+  <div class="trust-item">
+    <span class="trust-icon">&#129309;</span>
+    <span>Trusted Service</span>
+  </div>
 </div>
 
-<div class="services">
-  <h2>Our Services</h2>
-  <p>✔ Personal Loans</p>
-  <p>✔ Business Loans</p>
-  <p>✔ Emergency Loans</p>
-</div>
+<!-- Services -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <p class="section-label">What We Offer</p>
+    <h2>Loan Services Tailored to Your Needs</h2>
+    <p>Whether it's personal, business, or an emergency, we have the right solution for you.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">&#128100;</div>
+      <h3>Personal Loans</h3>
+      <p>Flexible personal loans to cover life's expenses, from home improvements to debt consolidation.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">&#128188;</div>
+      <h3>Business Loans</h3>
+      <p>Fuel your business growth with tailored funding solutions designed for entrepreneurs.</p>
+    </div>
+    <div class="service-card fade-in">
+      <div class="service-icon">&#127384;</div>
+      <h3>Emergency Loans</h3>
+      <p>When unexpected expenses arise, get the quick financial support you need most.</p>
+    </div>
+  </div>
+</section>
 
-<div class="contact">
-  <h2>Contact Us</h2>
-  <p>📞 +1 929 450 4094</p>
-  <p>📧 benevolentloanhelp@gmail.com</p>
-</div>
+<!-- How It Works -->
+<section class="how-it-works" id="how-it-works">
+  <div class="section-header fade-in">
+    <p class="section-label">Simple Process</p>
+    <h2>How It Works</h2>
+    <p>Getting your loan is quick and straightforward. Just follow these simple steps.</p>
+  </div>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-number">1</div>
+      <h3>Submit Your Application</h3>
+      <p>Reach out to us by phone, email, or WhatsApp with your loan requirements.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">2</div>
+      <h3>Quick Review</h3>
+      <p>Our team reviews your application promptly and works with you on the best terms.</p>
+    </div>
+    <div class="step fade-in">
+      <div class="step-number">3</div>
+      <h3>Get Your Funds</h3>
+      <p>Once approved, receive your funds quickly and start achieving your goals.</p>
+    </div>
+  </div>
+</section>
 
-<a class="whatsapp" href="https://wa.me/19294504094" target="_blank">
-  💬
+<!-- Why Choose Us -->
+<section class="why-us" id="why-us">
+  <div class="section-header fade-in">
+    <p class="section-label">Our Advantage</p>
+    <h2>Why Choose Benevolent Loan</h2>
+    <p>We go above and beyond to make sure your borrowing experience is smooth and stress-free.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature fade-in">
+      <div class="feature-icon">&#9201;</div>
+      <div>
+        <h3>Fast Processing</h3>
+        <p>No long waiting times. We prioritize speed without cutting corners.</p>
+      </div>
+    </div>
+    <div class="feature fade-in">
+      <div class="feature-icon">&#128200;</div>
+      <div>
+        <h3>Competitive Rates</h3>
+        <p>Transparent pricing with rates designed to work in your favor.</p>
+      </div>
+    </div>
+    <div class="feature fade-in">
+      <div class="feature-icon">&#128101;</div>
+      <div>
+        <h3>Dedicated Support</h3>
+        <p>A real person available to answer your questions every step of the way.</p>
+      </div>
+    </div>
+    <div class="feature fade-in">
+      <div class="feature-icon">&#128737;</div>
+      <div>
+        <h3>Secure & Confidential</h3>
+        <p>Your personal and financial information is always protected.</p>
+      </div>
+    </div>
+    <div class="feature fade-in">
+      <div class="feature-icon">&#128203;</div>
+      <div>
+        <h3>Flexible Terms</h3>
+        <p>Repayment plans tailored to your financial situation and preferences.</p>
+      </div>
+    </div>
+    <div class="feature fade-in">
+      <div class="feature-icon">&#10004;</div>
+      <div>
+        <h3>No Hidden Fees</h3>
+        <p>What you see is what you get. Full transparency on all charges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="testimonials">
+  <div class="section-header fade-in">
+    <p class="section-label">Testimonials</p>
+    <h2>What Our Clients Say</h2>
+    <p>Don't just take our word for it. Hear from people who've benefited from our services.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"The application process was incredibly smooth. I received my personal loan within days and the team was helpful from start to finish."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">JM</div>
+        <div>
+          <div class="author-name">James M.</div>
+          <div class="author-role">Personal Loan Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"Benevolent Loan helped me secure the funding I needed to expand my business. Professional, fast, and truly reliable."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">SR</div>
+        <div>
+          <div class="author-name">Sarah R.</div>
+          <div class="author-role">Business Loan Client</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <blockquote>"When I had an unexpected emergency, they came through fast. I can't recommend them enough for anyone who needs quick financial help."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">DL</div>
+        <div>
+          <div class="author-name">David L.</div>
+          <div class="author-role">Emergency Loan Client</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-header fade-in">
+    <p class="section-label">FAQ</p>
+    <h2>Frequently Asked Questions</h2>
+    <p>Find answers to common questions about our loan services.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">How quickly can I get approved?</button>
+      <div class="faq-answer">
+        <p>Most applications are reviewed within 24 hours. Once approved, funds can be disbursed quickly depending on the loan type and amount.</p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">What documents do I need to apply?</button>
+      <div class="faq-answer">
+        <p>Basic requirements include a valid ID, proof of income, and contact information. Our team will guide you through the specific requirements for your loan type.</p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">Are there any hidden fees?</button>
+      <div class="faq-answer">
+        <p>Absolutely not. We believe in full transparency. All fees and terms are clearly communicated upfront before you agree to anything.</p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">How do I make repayments?</button>
+      <div class="faq-answer">
+        <p>We offer flexible repayment options to suit your schedule. Our team will work with you to set up a repayment plan that fits your financial situation.</p>
+      </div>
+    </div>
+    <div class="faq-item fade-in">
+      <button class="faq-question" aria-expanded="false">Can I apply if I have a low credit score?</button>
+      <div class="faq-answer">
+        <p>We consider each application individually and look at the full picture, not just your credit score. Contact us to discuss your options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <div class="fade-in">
+    <h2>Ready to Get Started?</h2>
+    <p>Take the first step toward your financial goals. Reach out today and let us help.</p>
+    <a href="#contact" class="btn btn-primary">Contact Us Now &#8594;</a>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="section-header fade-in">
+    <p class="section-label">Get In Touch</p>
+    <h2>Contact Us</h2>
+    <p>We're here to help. Reach out through any of the channels below.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card fade-in">
+      <div class="contact-icon">&#128222;</div>
+      <h3>Call Us</h3>
+      <a href="tel:+19294504094">+1 (929) 450-4094</a>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">&#9993;</div>
+      <h3>Email Us</h3>
+      <a href="mailto:benevolentloanhelp@gmail.com">benevolentloanhelp@gmail.com</a>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">&#128172;</div>
+      <h3>WhatsApp</h3>
+      <a href="https://wa.me/19294504094" target="_blank" rel="noopener noreferrer">Message Us on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp" href="https://wa.me/19294504094" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  &#128172;
 </a>
 
+<!-- Footer -->
 <footer>
-  <p>Benevolent Loan Company © 2026</p>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Benevolent Loan Company</h3>
+      <p>Providing fast, reliable, and trusted financial solutions to help you achieve your goals.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#why-us">Why Choose Us</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+19294504094">+1 (929) 450-4094</a>
+      <a href="mailto:benevolentloanhelp@gmail.com">benevolentloanhelp@gmail.com</a>
+      <a href="https://wa.me/19294504094" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Benevolent Loan Company. All rights reserved.</p>
+  </div>
 </footer>
+
+<script>
+  // Mobile Navigation Toggle
+  document.getElementById('mobileToggle').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('active');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.remove('active');
+    });
+  });
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.parentElement;
+      var isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('active');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isActive) {
+        item.classList.add('active');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Scroll Animations
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
 
 </body>
 </html>
